@@ -6,7 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<%@ page import="java.sql.*" %> 
+<body>
+	<%@ page import="java.sql.*" %> 
 <%@ page import="javax.swing.*" %>
 <%
 //Saving
@@ -15,16 +16,14 @@
 	{
 		String t1=request.getParameter("t1");
 		String t2=request.getParameter("t2");
-		String t3=request.getParameter("t3");
 		
 		try
 		{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hotel", "hotel");
-			PreparedStatement psmt=conn.prepareStatement("insert into room_class values(?,?,?)");
+			PreparedStatement psmt=conn.prepareStatement("insert into room_info values(?,?)");
 			psmt.setString(1,t1);
 			psmt.setString(2,t2);
-			psmt.setString(3,t3);
 			psmt.executeQuery();
 			out.println("<script> alert('RECORD SAVED');</script>");
 		}
@@ -43,7 +42,7 @@
 				{
 					Class.forName("oracle.jdbc.driver.OracleDriver");
 					Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hotel", "hotel");
-					PreparedStatement psmt=conn.prepareStatement("delete from room_class where class_id=?");
+					PreparedStatement psmt=conn.prepareStatement("delete from room_info where room_id=?");
 					psmt.setString(1,t1);
 					psmt.executeQuery();
 					out.println("<script> alert('RECORD DELETED');</script>");
@@ -54,3 +53,5 @@
 				}
 			}
 %>
+</body>
+</html>

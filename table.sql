@@ -23,7 +23,7 @@ pay_id nvarchar2(10) constraint payidpkchk1 primary key,
 constraint payidpkchk2 check(pay_id like 'P%'),
 cust_id nvarchar2(10) constraint custidfk1 references customer(cust_id) on delete cascade,
 type nvarchar2(40),
-pay_day nvarchar2(60)
+pay_date nvarchar2(60)
 )
 /
 create table room_class

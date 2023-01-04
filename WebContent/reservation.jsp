@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
+<body>
 <%@ page import="java.sql.*" %> 
 <%@ page import="javax.swing.*" %>
 <%
@@ -16,15 +17,20 @@
 		String t1=request.getParameter("t1");
 		String t2=request.getParameter("t2");
 		String t3=request.getParameter("t3");
-		
+		String t4=request.getParameter("t4");
+		String t5=request.getParameter("t5");
+		String t6=request.getParameter("t6");
 		try
 		{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hotel", "hotel");
-			PreparedStatement psmt=conn.prepareStatement("insert into room_class values(?,?,?)");
+			PreparedStatement psmt=conn.prepareStatement("insert into reservation values(?,?,?,?,?,?)");
 			psmt.setString(1,t1);
 			psmt.setString(2,t2);
 			psmt.setString(3,t3);
+			psmt.setString(4,t4);
+			psmt.setString(5,t5);
+			psmt.setString(6,t6);
 			psmt.executeQuery();
 			out.println("<script> alert('RECORD SAVED');</script>");
 		}
@@ -33,7 +39,6 @@
 			out.println(e.toString());
 		}
 	}
-	
 	//deleting the data
 		if(btnval.equalsIgnoreCase("delete")) 
 			{
@@ -43,7 +48,7 @@
 				{
 					Class.forName("oracle.jdbc.driver.OracleDriver");
 					Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hotel", "hotel");
-					PreparedStatement psmt=conn.prepareStatement("delete from room_class where class_id=?");
+					PreparedStatement psmt=conn.prepareStatement("delete from reservaion where reser_id=?");
 					psmt.setString(1,t1);
 					psmt.executeQuery();
 					out.println("<script> alert('RECORD DELETED');</script>");
@@ -54,3 +59,5 @@
 				}
 			}
 %>
+</body>
+</html>
