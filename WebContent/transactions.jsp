@@ -56,6 +56,97 @@
 					out.println(e.toString());
 				}
 			}
+	
+		//Searching
+		if(btnval.equalsIgnoreCase("allsearch"))
+		{
+		 try
+		 {
+			  ResultSet rs;
+			  Class.forName("oracle.jdbc.driver.OracleDriver");
+			  Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hotel","hotel");
+			  Statement smt=conn.createStatement();
+			  rs=smt.executeQuery("select * from transactions");
+		%>
+			   <table border=1>
+				  <tr>
+			 					<th>TRANSACTION ID</th>
+			 					<th>CUSTOMER ID</th>
+			 					<th>EMPLOYEE ID</th>
+			 					<th>RESERVATION ID</th>
+			 					<th>TRANSACTION DATE</th>
+			 					
+			 	</tr>
+				<%
+				while(rs.next())
+				{
+		   		%>
+		   			    <tr>
+		   					<th><%=rs.getString(1)%></th>
+		   					<th><%=rs.getString(2)%></th>
+		   					<th><%=rs.getString(3)%></th>
+		   					<th><%=rs.getString(4)%></th>
+		   					<th><%=rs.getString(5)%></th>
+
+		   				</tr>
+		   		<%
+		   		}
+		   		%>
+				</table>
+		<%		
+		}
+			catch(Exception ex)
+			{
+			       JOptionPane.showMessageDialog(null,ex);
+
+			}
+	}
+
+//Particular Search
+	if(btnval.equalsIgnoreCase("psearch"))
+		{
+		 try
+		 {
+			  String t1=request.getParameter("t1");
+			  ResultSet rs;
+			  Class.forName("oracle.jdbc.driver.OracleDriver");
+			  Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hotel","hotel");
+			  Statement smt=conn.createStatement();
+			  rs=smt.executeQuery("select * from transactions where tid='"+t1+"' order by tid");
+		%>
+			   <table border=1>
+				  <tr>
+			 					<th>TRANSACTION ID</th>
+			 					<th>CUSTOMER ID</th>
+			 					<th>EMPLOYEE ID</th>
+			 					<th>RESERVATION ID</th>
+			 					<th>TRANSACTION DATE</th>
+			 			
+			 	</tr>
+				<%
+				while(rs.next())
+				{
+		   		%>
+		   			    <tr>
+		   					<th><%=rs.getString(1)%></th>
+		   					<th><%=rs.getString(2)%></th>
+		   					<th><%=rs.getString(3)%></th>
+		   					<th><%=rs.getString(4)%></th>
+		   					<th><%=rs.getString(5)%></th>
+		   					
+		   				</tr>
+		   		<%
+		   		}
+		   		%>
+				</table>
+		<%		
+		}
+			catch(Exception ex)
+			{
+			       JOptionPane.showMessageDialog(null,ex);
+
+			}
+	}
 %>
 </body>
 </html>

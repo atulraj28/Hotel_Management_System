@@ -53,4 +53,87 @@
 					out.println(e.toString());
 				}
 			}
+	
+		//Searching
+		if(btnval.equalsIgnoreCase("allsearch"))
+		{
+		 try
+		 {
+			  ResultSet rs;
+			  Class.forName("oracle.jdbc.driver.OracleDriver");
+			  Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hotel","hotel");
+			  Statement smt=conn.createStatement();
+			  rs=smt.executeQuery("select * from room_class");
+		%>
+			   <table border=1>
+				  <tr>
+			 					<th>CLASS ID</th>
+			 					<th>NAME</th>
+			 					<th>PRICE</th>
+			 				
+			 	</tr>
+				<%
+				while(rs.next())
+				{
+		   		%>
+		   			    <tr>
+		   					<th><%=rs.getString(1)%></th>
+		   					<th><%=rs.getString(2)%></th>
+		   					<th><%=rs.getString(3)%></th>
+		   					
+		   				</tr>
+		   		<%
+		   		}
+		   		%>
+				</table>
+		<%		
+		}
+			catch(Exception ex)
+			{
+			       JOptionPane.showMessageDialog(null,ex);
+
+			}
+	}
+
+//Particular Search
+	if(btnval.equalsIgnoreCase("psearch"))
+		{
+		 try
+		 {
+			  String t1=request.getParameter("t1");
+			  ResultSet rs;
+			  Class.forName("oracle.jdbc.driver.OracleDriver");
+			  Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hotel","hotel");
+			  Statement smt=conn.createStatement();
+			  rs=smt.executeQuery("select * from room_class where class_id='"+t1+"' order by class_id");
+		%>
+			   <table border=1>
+				  <tr>
+			 					<th>CLASS ID</th>
+			 					<th>NAME</th>
+			 					<th>PRICE</th>
+			 					
+			 	</tr>
+				<%
+				while(rs.next())
+				{
+		   		%>
+		   			    <tr>
+		   					<th><%=rs.getString(1)%></th>
+		   					<th><%=rs.getString(2)%></th>
+		   					<th><%=rs.getString(3)%></th>
+		   					
+		   				</tr>
+		   		<%
+		   		}
+		   		%>
+				</table>
+		<%		
+		}
+			catch(Exception ex)
+			{
+			       JOptionPane.showMessageDialog(null,ex);
+
+			}
+	}
 %>

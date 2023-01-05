@@ -10,6 +10,7 @@
 <%@ page import="java.sql.*" %> 
 <%@ page import="javax.swing.*" %>
 <%
+
 //Saving
 	String btnval=request.getParameter("b1");
 	if(btnval.equalsIgnoreCase("save")) 
@@ -41,16 +42,17 @@
 		}
 	}
 	
-//deleting the data
-if(btnval.equalsIgnoreCase("delete")) 
+	//Delete the record
+	if(btnval.equalsIgnoreCase("delete")) 
 	{
 		String t1=request.getParameter("t1");
+		
 		
 		try
 		{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hotel", "hotel");
-			PreparedStatement psmt=conn.prepareStatement("delete from customer where cust_id=?");
+			PreparedStatement psmt=conn.prepareStatement("delete from  customer where cust_id=?");
 			psmt.setString(1,t1);
 			psmt.executeQuery();
 			out.println("<script> alert('RECORD DELETED');</script>");
@@ -60,6 +62,97 @@ if(btnval.equalsIgnoreCase("delete"))
 			out.println(e.toString());
 		}
 	}
+	
+	//Searching
+			if(btnval.equalsIgnoreCase("allsearch"))
+			{
+			 try
+			 {
+				  ResultSet rs;
+				  Class.forName("oracle.jdbc.driver.OracleDriver");
+				  Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hotel","hotel");
+				  Statement smt=conn.createStatement();
+				  rs=smt.executeQuery("select * from customer");
+			%>
+				   <table border=1>
+					  <tr>
+				 					<th>CUSTOMER ID</th>
+				 					<th>FIRST NAME</th>
+				 					<th>LAST NAME</th>
+				 					<th>RESERVATION</th>
+				 					<th>ADDRESS</th>
+				 					<th>CONTACT</th>
+				 	</tr>
+					<%
+					while(rs.next())
+					{
+			   		%>
+			   			    <tr>
+			   					<th><%=rs.getString(1)%></th>
+			   					<th><%=rs.getString(2)%></th>
+			   					<th><%=rs.getString(3)%></th>
+			   					<th><%=rs.getString(4)%></th>
+			   					<th><%=rs.getString(5)%></th>
+			   					<th><%=rs.getString(6)%></th>
+			   				</tr>
+			   		<%
+			   		}
+			   		%>
+					</table>
+			<%		
+			}
+				catch(Exception ex)
+				{
+				       JOptionPane.showMessageDialog(null,ex);
+
+				}
+		}
+	
+	//Particular Search
+		if(btnval.equalsIgnoreCase("psearch"))
+			{
+			 try
+			 {
+				  String t1=request.getParameter("t1");
+				  ResultSet rs;
+				  Class.forName("oracle.jdbc.driver.OracleDriver");
+				  Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hotel","hotel");
+				  Statement smt=conn.createStatement();
+				  rs=smt.executeQuery("select * from customer where cust_id='"+t1+"' order by cust_id");
+			%>
+				   <table border=1>
+					  <tr>
+				 					<th>CUSTOMER ID</th>
+				 					<th>FIRST NAME</th>
+				 					<th>LAST NAME</th>
+				 					<th>RESERVATION</th>
+				 					<th>ADDRESS</th>
+				 					<th>CONTACT</th>
+				 	</tr>
+					<%
+					while(rs.next())
+					{
+			   		%>
+			   			    <tr>
+			   					<th><%=rs.getString(1)%></th>
+			   					<th><%=rs.getString(2)%></th>
+			   					<th><%=rs.getString(3)%></th>
+			   					<th><%=rs.getString(4)%></th>
+			   					<th><%=rs.getString(5)%></th>
+			   					<th><%=rs.getString(6)%></th>
+			   				</tr>
+			   		<%
+			   		}
+			   		%>
+					</table>
+			<%		
+			}
+				catch(Exception ex)
+				{
+				       JOptionPane.showMessageDialog(null,ex);
+
+				}
+		}
 %>
 </body>
 </html>
