@@ -83,3 +83,13 @@ insert into login values('hotel','hotel')
 /
 commit
 /
+create table admin_login
+(
+id nvarchar2(10),
+pwd nvarchar2(20)
+)
+/
+insert into admin_login values('admin','admin')
+/
+commit
+/

@@ -21,10 +21,10 @@
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 				Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hotel", "hotel");
 				Statement smt=conn.createStatement();
-				rs=smt.executeQuery("select * from login");
+				rs=smt.executeQuery("select * from admin_login");
 				while(rs.next())
 				{
-					if(rs.getString(1).equalsIgnoreCase(t1) && rs.getString(2).equals(t2))
+					if(rs.getString(1).equals(t1) && rs.getString(2).equals(t2))
 					{
 						f=1;
 						break;
@@ -32,13 +32,15 @@
 				}
 				if(f==0)
 				{
-					JOptionPane.showMessageDialog(null,"Either id or password is wrong");
+					JOptionPane.showMessageDialog(null,"unsucessful");
 					//out.println("<script>alert('Credentials are wrong') </script>");
 				}
 				else
 				{
-					out.println("<script>window.open('menu.html','_self') </script>");
+					//out.println("<script>window.open('menu.html','_self') </script>");
+					JOptionPane.showMessageDialog(null,"sucessful");
 				}
+				
 			}
 			catch(Exception ex)
 			{
