@@ -136,4 +136,28 @@
 
 			}
 	}
+
+	//update
+		if(btnval.equalsIgnoreCase("update"))   //from room_class_updateinfo
+		{
+			String t1=request.getParameter("t1");
+			String t2=request.getParameter("t2");
+			String t3=request.getParameter("t3");
+		
+			try
+			{
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hotel", "hotel");
+				PreparedStatement psmt=conn.prepareStatement("update room_class set name=?,price=? where class_id=?");
+				psmt.setString(3,t1);
+				psmt.setString(1,t2);
+				psmt.setString(2,t3);
+				psmt.executeQuery();
+				out.println("<script> alert('RECORD UPDATED');</script>");
+			}
+			catch(Exception e)
+			{
+				out.println(e.toString());
+			}
+		}
 %>

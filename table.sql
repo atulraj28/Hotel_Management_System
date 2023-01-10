@@ -73,3 +73,13 @@ reser_id nvarchar2(10) constraint tranresidfkchk references reservation(reser_id
 trans_date nvarchar2(50)
 )
 /
+create table login
+(
+id nvarchar2(10),
+pwd nvarchar2(20)
+)
+/
+insert into login values('hotel','hotel')
+/
+commit
+/
