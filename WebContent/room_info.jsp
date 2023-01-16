@@ -29,7 +29,7 @@
 		}
 		catch(Exception e)
 		{
-			out.println(e.toString());
+			JOptionPane.showMessageDialog(null,e.toString());
 		}
 	}
 	
@@ -49,7 +49,7 @@
 				}
 				catch(Exception e)
 				{
-					out.println(e.toString());
+					JOptionPane.showMessageDialog(null,e.toString());
 				}
 			}
 	
@@ -151,7 +151,7 @@
 			}
 			catch(Exception e)
 			{
-				out.println(e.toString());
+				JOptionPane.showMessageDialog(null,e.toString());
 			}
 		}
 %>

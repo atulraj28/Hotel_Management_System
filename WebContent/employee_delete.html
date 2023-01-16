@@ -2,45 +2,49 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="employee.css">
 <title>Insert title here</title>
 </head>
 <center>
 <body>
+	<div id="background"></div>
 	<form name=f method=post action=employee.jsp>
 		<table>
 			<tr>
-				<th>empid</th>
+				<th align="left">Employee Id</th>
 				<th><input type="text" name="t1"></th>
 			</tr>
-				<tr>
-				<th>fname</th>
+			<tr>
+				<th align="left">First Name</th>
 				<th><input type="text" name="t2"></th>
 			</tr>
 			<tr>
-				<th>lname</th>
+				<th align="left">Last Name</th>
 				<th><input type="text" name="t3"></th>
 			</tr>
 			<tr>
-				<th>job_debt</th>
+				<th align="left">Job Employee</th>
 				<th><input type="text" name="t3"></th>
 			</tr>
 			<tr>
-				<th>adress</th>
+				<th align="left">Address</th>
 				<th><input type="text" name="t3"></th>
 			</tr>
 			<tr>
-				<th>contact</th>
+				<th align="left">Contact</th>
 				<th><input type="text" name="t3"></th>
 			</tr>
 			<tr>
 				<th colspan=2><input type="reset" value="New" >
 				<input type="submit" value="Delete" name="b1">
 				<input type="submit" value="AllSearch" name="b1">
-				<input type="submit" value="PSearch" name="b1"></th>
+				<input type="submit" value="PSearch" name="b1">
+				<input type="button" value="Home" name="b1" onclick="home()"></th>
 			</tr>
 
 		</table>
 	
 	</form>
 </body>
+<script src="test.js"></script>
 </html>

@@ -2,41 +2,45 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="payments.css">
 <title>Insert title here</title>
 </head>
 <center>
 <body>
+<div id="background"></div>
 	<form name=f method=post action=transactions.jsp>
 		<table>
 			<tr>
-				<th>tid</th>
+				<th align="left">Transaction Id</th>
 				<th><input type="text" name="t1"></th>
 			</tr>
 				<tr>
-				<th>cust_id</th>
+				<th align="left">Customer Id</th>
 				<th><input type="text" name="t2"></th>
 			</tr>
 			<tr>
-				<th>emp_id</th>
+				<th align="left">Employee Id</th>
 				<th><input type="text" name="t3"></th>
 			</tr>
 			<tr>
-				<th>reser_id</th>
+				<th align="left">Reservation Id</th>
 				<th><input type="text" name="t4"></th>
 			</tr>
 			<tr>
-				<th>trans_date</th>
+				<th align="left">Transaction Date</th>
 				<th><input type="text" name="t5"></th>
 			</tr>
 			<tr>
 				<th colspan=2><input type="reset" value="New" >
 				<input type="submit" value="Save" name="b1">
 				<input type="submit" value="AllSearch" name="b1">
-				<input type="submit" value="PSearch" name="b1"></th>
+				<input type="submit" value="PSearch" name="b1">
+				<input type="button" value="Home" name="b1" onclick="home()"></th>
 			</tr>
 
 		</table>
 	
 	</form>
 </body>
+<script src="test.js"></script>
 </html>

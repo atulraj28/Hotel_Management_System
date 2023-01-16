@@ -37,7 +37,7 @@
 		}
 		catch(Exception e)
 		{
-			out.println(e.toString());
+			JOptionPane.showMessageDialog(null,e.toString());
 		}
 	}
 	
@@ -57,7 +57,7 @@
 			}
 			catch(Exception e)
 			{
-				out.println(e.toString());
+				JOptionPane.showMessageDialog(null,e.toString());
 			}
 		}
 	//Searching
@@ -177,7 +177,7 @@ if(btnval.equalsIgnoreCase("update"))   //from room_class_updateinfo
 	}
 	catch(Exception e)
 	{
-		out.println(e.toString());
+		JOptionPane.showMessageDialog(null,e.toString());
 	}
 }
 %>

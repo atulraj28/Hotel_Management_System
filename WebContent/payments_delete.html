@@ -2,10 +2,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="payments.css">
 <title>Insert title here</title>
 </head>
 <center>
 <body>
+<div id="background"></div>
 	<form name=f method=post action=payments.jsp>
 		<table>
 			<tr>
@@ -28,11 +30,13 @@
 				<th colspan=2><input type="reset" value="New" >
 				<input type="submit" value="Delete" name="b1">
 				<input type="submit" value="AllSearch" name="b1">
-				<input type="submit" value="PSearch" name="b1"></th>
+				<input type="submit" value="PSearch" name="b1">
+				<input type="button" value="Home" name="b1" onclick="home()"></th>
 			</tr>
 
 		</table>
 	
 	</form>
 </body>
+<script src="test.js"></script>
 </html>

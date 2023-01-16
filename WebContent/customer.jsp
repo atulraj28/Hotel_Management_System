@@ -35,10 +35,11 @@
 			psmt.setString(6,t6);
 			psmt.executeQuery();
 			out.println("<script> alert('RECORD SAVED');</script>");
+			out.println("<script> window.open('customer_save.html','_self')</script>");
 		}
 		catch(Exception e)
 		{
-			out.println(e.toString());
+			JOptionPane.showMessageDialog(null,e.toString());
 		}
 	}
 	
@@ -59,7 +60,7 @@
 		}
 		catch(Exception e)
 		{
-			out.println(e.toString());
+			JOptionPane.showMessageDialog(null,e.toString());
 		}
 	}
 	
@@ -181,7 +182,7 @@
 			}
 			catch(Exception e)
 			{
-				out.println(e.toString());
+				JOptionPane.showMessageDialog(null,e.toString());
 			}
 		}
 %>

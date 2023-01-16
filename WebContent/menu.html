@@ -4,11 +4,50 @@
     <meta charset="ISO-8859-1" />
     <title>Insert title here</title>
   </head>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+input[type=button]{
+  background-color: rgb(40, 39, 39);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+#background{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/hotel.jpg');
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size:cover;
+  z-index: -100;
+  filter: blur(-1px);
+    -webkit-filter: blur(3px)
+}
+table{
+  background-color: rgba(255, 250, 250, 0.738);
+  border-radius: 20px;
+
+}
+
+  </style>
   <center>
   <body>
+    <div id="background"></div>
     <table>
       <tr>
-        <th>Customer</th>
+        <th align="left">Customer</th>
         <th>
         <input type="button" value="Save" onclick="customer_save()" />
         </th>
@@ -17,7 +56,7 @@
       </tr>
 
 	  <tr>
-        <th>Employee</th>
+        <th align="left">Employee</th>
         <th>
         <input type="button" value="Save" onclick="employee_save()" />
         </th>
@@ -26,7 +65,7 @@
       </tr>
 
 	  <tr>
-        <th>Payments</th>
+        <th align="left">Payments</th>
         <th>
         <input type="button" value="Save" onclick="payments_save()" />
         </th>
@@ -35,7 +74,7 @@
       </tr>
 
 	  <tr>
-        <th>Reservation</th>
+        <th align="left">Reservation</th>
         <th>
         <input type="button" value="Save" onclick="reservation_save()" />
         </th>
@@ -44,7 +83,7 @@
       </tr>
 
 	  <tr>
-        <th>Room Class</th>
+        <th align="left">Room Class</th>
         <th>
         <input type="button" value="Save" onclick="room_class_save()" />
         </th>
@@ -53,7 +92,7 @@
       </tr>
 
 	  <tr>
-        <th>Room info</th>
+        <th align="left">Room info</th>
         <th>
         <input type="button" value="Save" onclick="room_info_save()" />
         </th>
@@ -62,7 +101,7 @@
       </tr>
 
 	  <tr>
-        <th>Transactions</th>
+        <th align="left">Transactions</th>
         <th>
         <input type="button" value="Save" onclick="transactions_save()" />
         </th>

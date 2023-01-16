@@ -37,8 +37,8 @@
 				}
 				else
 				{
-					//out.println("<script>window.open('menu.html','_self') </script>");
-					JOptionPane.showMessageDialog(null,"sucessful");
+					out.println("<script>window.open('signup.html','_self') </script>");
+					//JOptionPane.showMessageDialog(null,"sucessful");
 				}
 				
 			}

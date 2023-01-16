@@ -17,20 +17,42 @@
 	{
 		String t1=request.getParameter("t1");
 		String t2=request.getParameter("t2");
+		int f=0;
 		
 		try
 		{
+			ResultSet rs;
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hotel", "hotel");
-			PreparedStatement psmt=conn.prepareStatement("insert into login values(?,?)");
-			psmt.setString(1,t1);
-			psmt.setString(2,t2);
-			psmt.executeQuery();
-			out.println("<script> alert('User created');</script>");
+			
+			Statement smt=conn.createStatement();
+			rs=smt.executeQuery("select * from login");
+			while(rs.next())
+			{
+				if(rs.getString(1).equals(t1))
+				{
+					f=1;
+					break;
+				}
+			}
+			if(f==0)
+			{
+				PreparedStatement psmt=conn.prepareStatement("insert into login values(?,?)");
+				psmt.setString(1,t1);
+				psmt.setString(2,t2);
+				psmt.executeQuery();
+				out.println("<script> alert('User created');</script>");
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null,"User already exist");
+			}
+			
+
 		}
 		catch(Exception e)
 		{
-			out.println(e.toString());
+			JOptionPane.showMessageDialog(null,e.toString());
 		}
 	}
 	%>

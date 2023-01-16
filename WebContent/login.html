@@ -2,10 +2,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="login.css">
 <title>Insert title here</title>
+
 </head>
-<center>
 <body>
+<div id="background"></div>
 <form name=f method=post action="login.jsp">
 	<table>
         <tr>
@@ -17,10 +19,17 @@
             <th><input type="password" name="t2"></th>
         </tr>
         <tr>
-            <th colspan="2"><input type="submit" value="Login" name="b1"></th>
+            <th colspan="2"><input type="submit" value="Login" name="b1">
+            <input type="button" value="Create User" name="b1" onclick="create()"></th>           
         </tr>
     </table>
 </form>
 </body>
+<script>
+function create()
+{
+window.open("admin.html","_self");	
+}
 
+</script>
 </html>
