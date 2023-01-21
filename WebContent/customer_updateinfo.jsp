@@ -62,4 +62,50 @@
 			       JOptionPane.showMessageDialog(null,ex);
 			}
 	}
+		//searching
+		if(btnval.equalsIgnoreCase("Allsearch"))
+		{
+		 try
+		 {
+			  ResultSet rs;
+			  Class.forName("oracle.jdbc.driver.OracleDriver");
+			  Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hotel","hotel");
+			  Statement smt=conn.createStatement();
+			  rs=smt.executeQuery("select * from customer");
+		%>
+			   <table border=1>
+				  <tr>
+			 					<th>CUSTOMER ID</th>
+			 					<th>FIRST NAME</th>
+			 					<th>LAST NAME</th>
+			 					<th>RESERVATION</th>
+			 					<th>ADDRESS</th>
+			 					<th>CONTACT</th>
+			 	</tr>
+				<%
+				while(rs.next())
+				{
+		   		%>
+		   			    <tr>
+		   					<th><%=rs.getString(1)%></th>
+		   					<th><%=rs.getString(2)%></th>
+		   					<th><%=rs.getString(3)%></th>
+		   					<th><%=rs.getString(4)%></th>
+		   					<th><%=rs.getString(5)%></th>
+		   					<th><%=rs.getString(6)%></th>
+		   				</tr>
+		   		<%
+		   		}
+		   		%>
+				</table>
+				 <input type=button value="Print" onclick=window.print()>
+		<%		
+		}
+			catch(Exception ex)
+			{
+			       JOptionPane.showMessageDialog(null,ex);
+
+			}
+	}
+		
 	%>

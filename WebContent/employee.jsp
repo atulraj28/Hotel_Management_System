@@ -34,6 +34,7 @@
 			psmt.setString(6,t6);
 			psmt.executeQuery();
 			out.println("<script> alert('RECORD SAVED');</script>");
+			out.println("<script> window.open('employee_save.html','_self')</script>");
 		}
 		catch(Exception e)
 		{
@@ -54,6 +55,7 @@
 				psmt.setString(1,t1);
 				psmt.executeQuery();
 				out.println("<script> alert('RECORD DELETED');</script>");
+				out.println("<script> window.open('employee_delete.html','_self')</script>");
 			}
 			catch(Exception e)
 			{
@@ -96,6 +98,7 @@
 	   		}
 	   		%>
 			</table>
+			 <input type=button value="Print" onclick=window.print()>
 	<%		
 	}
 		catch(Exception ex)
@@ -115,7 +118,7 @@ if(btnval.equalsIgnoreCase("psearch"))
 		  Class.forName("oracle.jdbc.driver.OracleDriver");
 		  Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hotel","hotel");
 		  Statement smt=conn.createStatement();
-		  rs=smt.executeQuery("select * from employee where empid='"+t1+"' order by cust_id");
+		  rs=smt.executeQuery("select * from employee where empid='"+t1+"' order by empid");
 	%>
 		   <table border=1>
 			  <tr>
@@ -142,6 +145,7 @@ if(btnval.equalsIgnoreCase("psearch"))
 	   		}
 	   		%>
 			</table>
+			 <input type=button value="Print" onclick=window.print()>
 	<%		
 	}
 		catch(Exception ex)

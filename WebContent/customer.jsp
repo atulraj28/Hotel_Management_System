@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <%@ page import="java.sql.*" %> 
 <%@ page import="javax.swing.*" %>
 <%
@@ -100,6 +101,7 @@
 			   		}
 			   		%>
 					</table>
+					 <input type=button value="Print" onclick=window.print()>
 			<%		
 			}
 				catch(Exception ex)
@@ -146,6 +148,7 @@
 			   		}
 			   		%>
 					</table>
+					 <input type=button value="Print" onclick=window.print()>
 			<%		
 			}
 				catch(Exception ex)

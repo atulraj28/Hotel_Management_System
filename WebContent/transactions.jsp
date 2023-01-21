@@ -93,6 +93,7 @@
 		   		}
 		   		%>
 				</table>
+				 <input type=button value="Print" onclick=window.print()>
 		<%		
 		}
 			catch(Exception ex)
@@ -139,6 +140,7 @@
 		   		}
 		   		%>
 				</table>
+				 <input type=button value="Print" onclick=window.print()>
 		<%		
 		}
 			catch(Exception ex)
